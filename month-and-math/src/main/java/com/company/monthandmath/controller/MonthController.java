@@ -25,7 +25,7 @@ public class MonthController {
             new Month(11,"November"),
             new Month(12,"December")
     ));
-    @RequestMapping(value= " /month/1", method= RequestMethod.GET)
+    @RequestMapping(value= "/month/{number}", method= RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     public Month getMonthByNumber(@PathVariable int number){
         Month monthFound = null;
