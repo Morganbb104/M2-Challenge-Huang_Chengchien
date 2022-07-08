@@ -6,48 +6,48 @@ import java.util.Objects;
 public class MathSolution {
 
     @NotNull(message = "first input number can't be null")
-    private double operand1;
+    private int operand1;
     @NotNull(message = "second input number can't be null")
-    private double operand2;
-    private double operation;
-    private double answer;
+    private int operand2;
+    private String operation;
+    private int answer;
 
-    public MathSolution(double operand1, double operand2, double operation, double answer) {
+    public MathSolution(int operand1, int operand2, String operation, int answer) {
         this.operand1 = operand1;
         this.operand2 = operand2;
         this.operation = operation;
         this.answer = answer;
     }
 
-    public double getOperand1() {
+    public int getOperand1() {
         return operand1;
     }
 
-    public void setOperand1(double operand1) {
+    public void setOperand1(int operand1) {
         this.operand1 = operand1;
     }
 
-    public double getOperand2() {
+    public int getOperand2() {
         return operand2;
     }
 
-    public void setOperand2(double operand2) {
+    public void setOperand2(int operand2) {
         this.operand2 = operand2;
     }
 
-    public double getOperation() {
+    public String getOperation() {
         return operation;
     }
 
-    public void setOperation(double operation) {
+    public void setOperation(String operation) {
         this.operation = operation;
     }
 
-    public double getAnswer() {
+    public int getAnswer() {
         return answer;
     }
 
-    public void setAnswer(double answer) {
+    public void setAnswer(int answer) {
         this.answer = answer;
     }
 
@@ -56,7 +56,7 @@ public class MathSolution {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MathSolution that = (MathSolution) o;
-        return Double.compare(that.operand1, operand1) == 0 && Double.compare(that.operand2, operand2) == 0 && Double.compare(that.operation, operation) == 0 && Double.compare(that.answer, answer) == 0;
+        return operand1 == that.operand1 && operand2 == that.operand2 && answer == that.answer && Objects.equals(operation, that.operation);
     }
 
     @Override
@@ -69,7 +69,7 @@ public class MathSolution {
         return "MathSolution{" +
                 "operand1=" + operand1 +
                 ", operand2=" + operand2 +
-                ", operation=" + operation +
+                ", operation='" + operation + '\'' +
                 ", answer=" + answer +
                 '}';
     }

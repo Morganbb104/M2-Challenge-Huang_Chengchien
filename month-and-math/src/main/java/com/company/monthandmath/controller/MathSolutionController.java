@@ -9,10 +9,10 @@ import javax.validation.Valid;
 @RestController
 public class MathSolutionController {
 //add
-@RequestMapping(value="/add",method= RequestMethod.GET)
-@ResponseStatus(HttpStatus.OK)
-    public MathSolution add(@Valid @RequestBody MathSolution mathSolution){
-
-}
+//@RequestMapping(value="/add",method= RequestMethod.GET)
+//@ResponseStatus(HttpStatus.OK)
+//    public MathSolution add(@Valid @RequestBody MathSolution mathSolution){
+//
+//}
 
 }

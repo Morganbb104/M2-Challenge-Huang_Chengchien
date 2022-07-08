@@ -4,19 +4,19 @@ import java.util.Objects;
 
 public class Month {
 
-    String number;
+    int number;
     String name;
 
-    public Month(String number, String monthName) {
+    public Month(int number, String monthName) {
         this.number = number;
         this.name = monthName;
     }
 
-    public String getNumber() {
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 
