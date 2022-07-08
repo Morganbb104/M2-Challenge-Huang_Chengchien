@@ -5,11 +5,11 @@ import java.util.Objects;
 public class Month {
 
     String number;
-    String monthName;
+    String name;
 
     public Month(String number, String monthName) {
         this.number = number;
-        this.monthName = monthName;
+        this.name = monthName;
     }
 
     public String getNumber() {
@@ -21,11 +21,11 @@ public class Month {
     }
 
     public String getMonthName() {
-        return monthName;
+        return name;
     }
 
     public void setMonthName(String monthName) {
-        this.monthName = monthName;
+        this.name = monthName;
     }
 
     @Override
@@ -33,19 +33,19 @@ public class Month {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Month month = (Month) o;
-        return Objects.equals(number, month.number) && Objects.equals(monthName, month.monthName);
+        return Objects.equals(number, month.number) && Objects.equals(name, month.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(number, monthName);
+        return Objects.hash(number, name);
     }
 
     @Override
     public String toString() {
         return "Month{" +
                 "number='" + number + '\'' +
-                ", monthName='" + monthName + '\'' +
+                ", monthName='" + name + '\'' +
                 '}';
     }
 }
