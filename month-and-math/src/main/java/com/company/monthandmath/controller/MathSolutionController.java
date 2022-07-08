@@ -12,7 +12,7 @@ public class MathSolutionController {
 @RequestMapping(value="/add",method= RequestMethod.GET)
 @ResponseStatus(HttpStatus.OK)
     public MathSolution add(@Valid @RequestBody MathSolution mathSolution){
- 
+
 }
 
 }
