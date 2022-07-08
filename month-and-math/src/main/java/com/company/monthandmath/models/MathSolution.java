@@ -1,10 +1,13 @@
 package com.company.monthandmath.models;
 
+import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 public class MathSolution {
 
+    @NotNull(message = "first input number can't be null")
     private double operand1;
+    @NotNull(message = "second input number can't be null")
     private double operand2;
     private double operation;
     private double answer;
