@@ -7,25 +7,44 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+
 @RestController
 public class MathSolutionController {
-//add
-//@RequestMapping(value="/add",method= RequestMethod.GET)
-//@ResponseStatus(HttpStatus.OK)
-//    public MathSolution add(@Valid @RequestBody MathSolution mathSolution){
-//
-//}
+    //add
+    @PostMapping(value = "/add")
+    @ResponseStatus(value = HttpStatus.OK)
+    public MathSolution add(@Valid @RequestBody MathSolution input) {
+        if ((input.getOperand1() == 0 || input.getOperand2() == 0)) {
+            throw new IllegalArgumentException("you have to provide an integer for both operands");
+        }
+        return new MathSolution(input.getOperand1(), input.getOperand2(), "add", input.getOperand1() + input.getOperand2());
+    }
 
+    @PostMapping(value = "/subtract")
+    @ResponseStatus(value = HttpStatus.OK)
+    public MathSolution subtract(@Valid @RequestBody MathSolution input) {
+        if ((input.getOperand1() == 0 || input.getOperand2() == 0)) {
+            throw new IllegalArgumentException("you have to provide an integer for both operands");
+        }
+        return new MathSolution(input.getOperand1(), input.getOperand2(), "subtract", input.getOperand1() - input.getOperand2());
+    }
 
+    @PostMapping(value = "/multiply")
+    @ResponseStatus(value = HttpStatus.OK)
+    public MathSolution multiply(@Valid @RequestBody MathSolution input) {
+        if ((input.getOperand1() == 0 || input.getOperand2() == 0)) {
+            throw new IllegalArgumentException("you have to provide an integer for both operands");
+        }
+        return new MathSolution(input.getOperand1(), input.getOperand2(), "multiply", input.getOperand1() * input.getOperand2());
+    }
 
-//@RequestMapping(value="/subtract",method= RequestMethod.GET)
-//@ResponseStatus(HttpStatus.OK)
-
-    //@RequestMapping(value="/multiply",method= RequestMethod.GET)
-//@ResponseStatus(HttpStatus.OK)
-
-
-    //@RequestMapping(value="/divide",method= RequestMethod.GET)
-//@ResponseStatus(HttpStatus.OK)
+    @PostMapping(value = "/divide")
+    @ResponseStatus(value = HttpStatus.OK)
+    public MathSolution divide(@Valid @RequestBody MathSolution input) {
+        if ((input.getOperand1() == 0 || input.getOperand2() == 0)) {
+            throw new IllegalArgumentException("you have to provide an integer for both operands");
+        }
+        return new MathSolution(input.getOperand1(), input.getOperand2(), "divide", input.getOperand1() / input.getOperand2());
+    }
 
 }
