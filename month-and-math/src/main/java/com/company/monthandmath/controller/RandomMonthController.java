@@ -6,12 +6,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-
+@RestController
 public class RandomMonthController {
     private static List<Month> monthList= new ArrayList<>(Arrays.asList(
             new Month(1,"January"),
@@ -29,21 +30,12 @@ public class RandomMonthController {
     ));
     @GetMapping("/randomMonth")
     @ResponseStatus(HttpStatus.OK)
-    public Month getRandomMonthNumber(@PathVariable int number){
-        int min = 1;
-        int max = 12;
-        int random_int = (int)Math.floor(Math.random()*(max-min+1)+min);
+    public Month getRandomMonthNumber(){
+        Random randomNumberGenerator = new Random();
+        int randomNumber = randomNumberGenerator.nextInt(monthList.size());
+        return monthList.get(randomNumber);
 
-        Month monthFound = null;
-        for(Month month: monthList){
-            if(random_int == number ){
-                monthFound = month;
-                break;
-            }
-
-        }
-        return monthFound;
-
+        
     }
 
 
