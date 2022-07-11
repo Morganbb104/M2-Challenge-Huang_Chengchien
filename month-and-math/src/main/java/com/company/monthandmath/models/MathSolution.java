@@ -19,6 +19,10 @@ public class MathSolution {
         this.answer = answer;
     }
 
+    public MathSolution() {
+
+    }
+
     public int getOperand1() {
         return operand1;
     }

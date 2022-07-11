@@ -32,14 +32,11 @@ public class RandomMonthControllerTest {
 
     @Test
     public void shouldReturnExpectedMonthNameByRandomNumber() throws Exception{
-//        Month outputMonth = new Month(9,"September");
-//        String outputJson = mapper.writeValueAsString(outputMonth);
 
         mockmvc.perform(get("/randomMonth"))
                 .andDo(print())
                 .andExpect(status().isOk());
-//                .andExpect(MockMvcResultMatchers.content().string(outputJson));
-//                .andExpect(content().string(outputJson));
+
 
 
     }
