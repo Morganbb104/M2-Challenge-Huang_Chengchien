@@ -35,7 +35,7 @@ public class RandomMonthController {
         int randomNumber = randomNumberGenerator.nextInt(monthList.size());
         return monthList.get(randomNumber);
 
-        
+
     }
 
 
