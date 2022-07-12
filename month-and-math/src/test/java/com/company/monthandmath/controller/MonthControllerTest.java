@@ -37,7 +37,14 @@ public class MonthControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string(outputJson));
+    }
 
+    @Test
+    public void shouldReturnStatus422() throws Exception{
+
+        mockmvc.perform(get("/month/19"))
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity()); //(Status code is 422 if missing operand or out of range)
 
     }
 

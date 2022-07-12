@@ -37,8 +37,7 @@ public class RandomMonthControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk());
 
-
-
     }
 
 }
+

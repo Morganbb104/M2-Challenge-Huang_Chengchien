@@ -1,5 +1,6 @@
 package com.company.monthandmath.controller;
 
+import com.company.monthandmath.exception.NotFoundException;
 import com.company.monthandmath.models.Month;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -27,20 +28,18 @@ public class MonthController {
     ));
     @RequestMapping(value= "/month/{number}", method= RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
-    public Month getMonthByNumber(@PathVariable int number){
+    public Month getMonthByNumber(@PathVariable int number) throws Exception{
         Month monthFound = null;
-
         for(Month month: monthList){
-            if(month.getNumber() == number ){
+            if(month.getNumber() == number){
                 monthFound = month;
                 break;
             }
-
-
+        }
+        if(number < 1 || number > 12){
+            throw new NotFoundException("Not in Range");
         }
         return monthFound;
-
     }
 }
 
-//Random Month:
