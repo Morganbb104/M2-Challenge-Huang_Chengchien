@@ -1,9 +1,9 @@
 package com.company.monthandmath.controller;
 
-import com.company.monthandmath.exception.NotFoundException;
 import com.company.monthandmath.models.Month;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.webjars.NotFoundException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
