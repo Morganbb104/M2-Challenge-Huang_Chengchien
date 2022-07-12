@@ -40,12 +40,9 @@ public class MonthControllerTest {
     }
 
     @Test
-    public void shouldReturnStatus422() throws Exception{
-
-        mockmvc.perform(get("/month/19"))
-                .andDo(print())
-                .andExpect(status().isUnprocessableEntity()); //(Status code is 422 if missing operand or out of range)
-
+            (expected = IllegalArgumentException.class)
+    public void shouldThrow422ErrorIfInputOutOfRange() throws Exception {
+        mockmvc.perform(get("month/13"));
     }
 
 }

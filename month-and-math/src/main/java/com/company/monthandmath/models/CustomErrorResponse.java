@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDateTime;
 
-public class CustomerErrorResponse {
+public class CustomErrorResponse {
 
 
     String errorMsg;
@@ -12,6 +12,7 @@ public class CustomerErrorResponse {
     String errorCode;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm:ss")
     LocalDateTime timestamp;
+
 
     public CustomErrorResponse() {
     }

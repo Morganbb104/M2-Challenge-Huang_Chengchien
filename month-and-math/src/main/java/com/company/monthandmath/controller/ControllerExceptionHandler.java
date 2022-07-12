@@ -1,7 +1,7 @@
 package com.company.monthandmath.controller;
 
 import com.company.monthandmath.exception.NotFoundException;
-import com.company.monthandmath.models.CustomerErrorResponse;
+import com.company.monthandmath.models.CustomErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -20,7 +20,7 @@ public class ControllerExceptionHandler {
 
     @ExceptionHandler(value= {MethodArgumentNotValidException.class})
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    public ResponseEntity<List<CustomErrorResponse>> newResponseErrors(MethodArgumentNotValidException e) {
+    public ResponseEntity<List<CustomErrorResponse>>newResponseErrors(MethodArgumentNotValidException e) {
 
         // BindingResult holds the validation errors
         BindingResult result = e.getBindingResult();
@@ -32,7 +32,7 @@ public class ControllerExceptionHandler {
         List<CustomErrorResponse> errorResponseList = new ArrayList<>();
 
         for (FieldError fieldError : fieldErrors) {
-            CustomErrorResponse errorResponse = new CustomErrorResponse(HttpStatus.UNPROCESSABLE_ENTITY.toString(), fieldError.getDefaultMessage());
+            CustomErrorResponse errorResponse = new CustomErrorResponse(fieldError.getDefaultMessage(),HttpStatus.UNPROCESSABLE_ENTITY.toString());
             errorResponse.setTimestamp(LocalDateTime.now());
             errorResponse.setStatus(HttpStatus.UNPROCESSABLE_ENTITY.value());
             errorResponseList.add(errorResponse);
@@ -55,12 +55,12 @@ public class ControllerExceptionHandler {
     }
 
     @ExceptionHandler(value = NotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     public ResponseEntity<CustomErrorResponse> notFoundException(NotFoundException e) {
-        CustomErrorResponse error = new CustomErrorResponse(HttpStatus.NOT_FOUND.toString(), e.getMessage());
-        error.setStatus((HttpStatus.NOT_FOUND.value()));
+        CustomErrorResponse error = new CustomErrorResponse(HttpStatus.UNPROCESSABLE_ENTITY.toString(), e.getMessage());
+        error.setStatus((HttpStatus.UNPROCESSABLE_ENTITY.value()));
         error.setTimestamp(LocalDateTime.now());
-        ResponseEntity<CustomErrorResponse> responseEntity = new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+        ResponseEntity<CustomErrorResponse> responseEntity = new ResponseEntity<>(error, HttpStatus.UNPROCESSABLE_ENTITY);
         return responseEntity;
     }
 
