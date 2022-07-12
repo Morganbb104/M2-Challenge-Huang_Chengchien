@@ -24,6 +24,16 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/MathSolution'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+                  - $ref: '#/components/schemas/CustomErrorResponse'
   /multiply:
     post:
       tags:
@@ -42,6 +52,16 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/MathSolution'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+                  - $ref: '#/components/schemas/CustomErrorResponse'
   /divide:
     post:
       tags:
@@ -60,6 +80,16 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/MathSolution'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+                  - $ref: '#/components/schemas/CustomErrorResponse'
   /add:
     post:
       tags:
@@ -78,6 +108,16 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/MathSolution'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+                  - $ref: '#/components/schemas/CustomErrorResponse'
   /randomMonth:
     get:
       tags:
@@ -90,6 +130,16 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/Month'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+                  - $ref: '#/components/schemas/CustomErrorResponse'
   /month/{number}:
     get:
       tags:
@@ -109,8 +159,31 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/Month'
+        '422':
+          description: Unprocessable Entity
+          content:
+            '*/*':
+              schema:
+                oneOf:
+                  - type: array
+                    items:
+                      $ref: '#/components/schemas/CustomErrorResponse'
+                  - $ref: '#/components/schemas/CustomErrorResponse'
 components:
   schemas:
+    CustomErrorResponse:
+      type: object
+      properties:
+        errorMsg:
+          type: string
+        status:
+          type: integer
+          format: int32
+        errorCode:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
     MathSolution:
       required:
         - operand1
