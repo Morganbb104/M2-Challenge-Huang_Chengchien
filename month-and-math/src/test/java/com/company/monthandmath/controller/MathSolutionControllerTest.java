@@ -31,6 +31,7 @@ public class MathSolutionControllerTest {
 
     }
 
+    //successful Test in add
     @Test
     public void shouldReturnSumOfTwoNumbers() throws Exception{
         MathSolution mathSolution = new MathSolution();
@@ -48,7 +49,24 @@ public class MathSolutionControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().json(outputString));
     }
+    // missing operand in add
+    @Test
+    public void shouldReturnError422OfSumTwoNumbersInMissingOperand() throws Exception{
+        MathSolution mathSolution = new MathSolution();
+        mathSolution.setOperand1(6);
 
+        String inputString = mapper.writeValueAsString(mathSolution);
+
+        this.mockmvc.perform(post("/add")
+                        .content(inputString)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
+    }
+
+
+
+    // successful test in subtract
     @Test
     public void shouldReturnDifferenceOfTwoNumbers() throws Exception{
         MathSolution mathSolution = new MathSolution();
@@ -69,6 +87,22 @@ public class MathSolutionControllerTest {
 
     }
 
+    // missing operand in subtract
+    @Test
+    public void shouldReturnError422OfDifferenceTwoNumbersInMissingOperand() throws Exception{
+        MathSolution mathSolution = new MathSolution();
+        mathSolution.setOperand1(6);
+
+        String inputString = mapper.writeValueAsString(mathSolution);
+
+        this.mockmvc.perform(post("/subtract")
+                        .content(inputString)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
+    }
+
+    // successful test in multiply
     @Test
     public void shouldReturnProductOfTwoNumbers() throws Exception{
         MathSolution mathSolution = new MathSolution();
@@ -88,6 +122,23 @@ public class MathSolutionControllerTest {
 
 
     }
+
+    // missing operand in multiply
+    @Test
+    public void shouldReturnError422OfProductTwoNumbersInMissingOperand() throws Exception{
+        MathSolution mathSolution = new MathSolution();
+        mathSolution.setOperand1(6);
+
+        String inputString = mapper.writeValueAsString(mathSolution);
+
+        this.mockmvc.perform(post("/multiply")
+                        .content(inputString)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
+    }
+
+    // successful Test in divide
     @Test
     public void shouldReturnQuotientOfTwoNumbers() throws Exception{
         MathSolution mathSolution = new MathSolution();
@@ -104,6 +155,40 @@ public class MathSolutionControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().json(outputString));
+
+
+    }
+
+    // missing operand in Divide
+    @Test
+    public void shouldReturnError422OfQuotientTwoNumbersInMissingOperand() throws Exception{
+        MathSolution mathSolution = new MathSolution();
+        mathSolution.setOperand1(6);
+
+        String inputString = mapper.writeValueAsString(mathSolution);
+
+        this.mockmvc.perform(post("/divide")
+                        .content(inputString)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
+    }
+
+
+
+    // Divided by zero and return status 422
+    @Test
+    public void shouldReturnStatus422IfOperand2IsZero() throws Exception{
+        MathSolution mathSolution = new MathSolution();
+        mathSolution.setOperand1(6);
+        mathSolution.setOperand2(0);
+        String inputString = mapper.writeValueAsString(mathSolution);
+
+        this.mockmvc.perform(post("/divide")
+                        .content(inputString)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
 
 
     }
